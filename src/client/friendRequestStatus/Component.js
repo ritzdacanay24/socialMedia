@@ -1,4 +1,4 @@
-import React from './node_modules/react'
+import React from 'react'
 import axios from 'axios';
 export default class FriendRequestStatus extends React.Component {
 
@@ -11,7 +11,7 @@ export default class FriendRequestStatus extends React.Component {
 
     getFriendRequestStatus = async () => {
         this.setState({ friendRequestStatus: 'pending' }, () => {
-            axios.get('/pendingRequests/87')
+            axios.get(':3000/pendingRequests/87')
                 .then(result => {
                     console.log(result)
                     //this.setState({ friendRequestStatus: 'confirmed' })
@@ -21,10 +21,13 @@ export default class FriendRequestStatus extends React.Component {
                 })
         })
     }
+    componentDidMount(){
+        this.getFriendRequestStatus()
+    }
 
     render() {
         return (
-            <div></div>
+            <div>takeii</div>
         )
     }
 }
