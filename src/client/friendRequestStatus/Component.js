@@ -5,7 +5,8 @@ export default class FriendRequestStatus extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            friendRequestStatus: 'pending'
+            friendRequestStatus: 'pending',
+            firstName: 'null'
         }
     }
 
@@ -15,9 +16,11 @@ export default class FriendRequestStatus extends React.Component {
                 .then(result => {
                     console.log(...result.data[0].firstName)
                     //this.setState({ friendRequestStatus: 'confirmed' })
+                    this.setState({ firstName: result.data[0].firstName })
                 })
                 .catch(error => {
                     //this.setState({ friendRequestStatus: 'pending' })
+                    this.setState({ firstName: 'no first name found'})
                 })
         })
     }
@@ -27,7 +30,7 @@ export default class FriendRequestStatus extends React.Component {
 
     render() {
         return (
-            <div>takeii</div>
+            <div>{this.state.firstName}</div>
         )
     }
 }
