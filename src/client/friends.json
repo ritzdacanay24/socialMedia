@@ -1,0 +1,29 @@
+[
+    {
+        "userID": "11111111111",
+        "firstName": "Homer",
+        "lastName": "Simpson"
+    },
+    {
+        "userID": "22222222222",
+        "firstName": "Marge",
+        "lastName": "Simpson"
+    },
+    {
+        "userID": "33333333333",
+        "firstName": "Bart",
+        "lastName": "Simpson"
+    },
+    {
+        "userID": "44444444444",
+        "firstName": "Lisa",
+        "lastName": "Simpson"
+    },
+    {
+        "userID": "55555555555",
+        "firstName": "Maggie",
+        "lastName": "Simpson"
+    }
+
+]
+

@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import AnswerFriendRequest from './AnswerFriendRequest';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AnswerFriendRequest currentUserId="5f44556094f2ab3c0cfa5b52"/>, document.getElementById('root'));
