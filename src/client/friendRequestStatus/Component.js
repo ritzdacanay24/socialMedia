@@ -11,9 +11,9 @@ export default class FriendRequestStatus extends React.Component {
 
     getFriendRequestStatus = async () => {
         this.setState({ friendRequestStatus: 'pending' }, () => {
-            axios.get('localhost:5000/pendingRequests/87')
+            axios.get('http://localhost:5000/api/friends/pendingRequests/5f444597da1a1a340c0ad137')
                 .then(result => {
-                    console.log(result)
+                    console.log(...result.data[0].firstName)
                     //this.setState({ friendRequestStatus: 'confirmed' })
                 })
                 .catch(error => {
