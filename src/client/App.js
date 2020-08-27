@@ -1,24 +1,65 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+const jwtDecode = require('jwt-decode');
+
 import './app.css';
-import ReactImage from './react.png';
+import Landing from './components/Landing';
+import Home from './components/Home';
+import ProtectedRoute from './components/ProtectedRoute';
 
-export default class App extends Component {
-  state = { username: null };
+function App() {
+  const cookieName = 'socialMedia';
+  const [cookies, setCookie, removeCookie] = useCookies([cookieName]);
+  const history = useHistory();
+  let userInfo = false;
 
-  componentDidMount() {
-    fetch('/api/getUsername')
-      .then(res => res.json())
-      .then(user => this.setState({ username: user.username }));
+  function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
   }
 
-  render() {
-    const { username } = this.state;
-    return (
-      <div>
-        Test
-        {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
-        <img src={ReactImage} alt="react" />
-      </div>
-    );
+  //checks if cookie is found
+  if(!isEmpty(cookies)){
+    try {
+      //jwtDecode just grabs the token. It does not validate the token.
+      //userInfo will hold the user info in an object. If no jwt found, userInfo will hold the false value.
+      userInfo = jwtDecode(cookies.socialMedia);
+    } catch {
+      //if token is not found, send user to landing page.
+      history.push("/");
+    }
   }
+
+  const [user, setUser] = useState(userInfo);
+  
+  const handleLogin = e => {
+    e.preventDefault();
+    setUser(user);
+
+    //if user is found, send to home component
+    if(user){
+      history.push("/home");
+      window.location.reload(false);
+    }
+  }
+
+  const handleLogout = e => {
+    e.preventDefault();
+
+    //if user logs out, set user to false and remove cookie
+    setUser(false);
+    window.location.reload(false);
+    removeCookie(cookieName, { path: '/' });
+  }
+  
+  return (
+    <div className="App">
+      <Router history={history}>
+        <Route exact path='/' handleLogin={handleLogin} render={props => <Landing {...props} user={user} handleLogin={handleLogin}  />} />
+        <ProtectedRoute exact path='/home' user={user} component={Home} handleLogout={handleLogout}/>      
+      </Router>
+    </div>
+  );
 }
+
+export default App;
