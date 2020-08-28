@@ -1,6 +1,6 @@
 import React from 'react';
-import RegistrationForm from '../components/registrationForm'
-import LoginForm from '../components/loginForm'
+import RegistrationForm from '../components/RegistrationForm'
+import LoginForm from '../components/LoginForm'
 
 
 const Landing = props => {
@@ -15,7 +15,9 @@ const Landing = props => {
       <div>
         <LoginForm/>
       </div>
-      
+
+      <button onClick={props.handleLogin}>This is a log in test button. Remember to set the cookie!</button>
+
     </div>
   )
 };
