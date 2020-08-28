@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import './app.css';
+<<<<<<< Updated upstream
 import FriendRequestStatus from './components/friendRequestStatus';
 import RegistrationForm from './components/registration';
+=======
+import FriendRequestStatus from './FriendRequestStatus';
+import RegistrationForm from './registration';
+>>>>>>> Stashed changes
 
 
 
