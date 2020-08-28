@@ -62,7 +62,7 @@ function App() {
   return (
     <div className="App" >
       <Router history={history}>
-        <Route exact path='/' handleLogin={handleLogin} render={props => <Landing/>} />
+        <Route exact path='/' handleLogin={handleLogin} render={props => <Landing {...props} user={user} handleLogin={handleLogin}  />} />
         <ProtectedRoute exact path='/home' user={user} component={Home} handleLogout={handleLogout}/>      
         <ProtectedRoute exact path='/PendingFriendRequests' user={user} component={PendingFriendRequests}/>      
       </Router>
