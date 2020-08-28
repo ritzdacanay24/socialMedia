@@ -1,17 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 import axios from 'axios';
 
-
-export default class RegistrationForm extends Component {
-    constructor(props)  {
-        super(props);
-
-            this.state = {
-                email: "",
-                firstName: "",
-                lastName: "",
-                password: ""
-            }
+class LoginForm extends React.Component{
+    constructor(props){
+        super(props); 
+        this.state = {
+            email: "",
+            password: ""
+        };
         
             this.handleSubmit = this.handleSubmit.bind(this);
             this.handleChange = this.handleChange.bind(this);
@@ -23,14 +19,12 @@ export default class RegistrationForm extends Component {
             });
         }
         handleSubmit(event){
-            const {email, password, firstName, lastName} = this.state
+            const {email, password} = this.state
 
-            axios.post(`http://localhost:5000/api/users`,
+            axios.get(`http://localhost:5000/api/users/${loggedInUserId}`,
                 {
                     user: {
                         email: email,
-                        firstName: firstName,
-                        lastName: lastName,
                         password: password
                         }
                 },
@@ -39,12 +33,12 @@ export default class RegistrationForm extends Component {
 
             ) 
             .then(response => {
-                if (response.data.status === "created") {
+                if (response.data.logged_in) {
                     this.props.handleSuccessfulAuth(response.data);
                   }
             })
             .catch(error =>{
-                console.log("Registration error, you may not see the high council", error);
+                console.log("Oops! something went wrong, check your credentials and try again.", error);
 
             });
         event.preventDefault();
@@ -56,13 +50,7 @@ export default class RegistrationForm extends Component {
             <div>
                 <form onSubmit = {this.handleSubmit}>
                     <div>
-                        <h4>New User Registration</h4>
-                    </div>
-                    <div>
-                        <input type="firstName" name="firstName" placeholder="Enter your first name" value= {this.state.firstName} onChange={this.handleChange} required/>
-                    </div>
-                    <div>
-                        <input type="lastName" name="lastName" placeholder="Enter your last name" value= {this.state.lastName} onChange={this.handleChange} required/>
+                        <h4>Existing User Login</h4>
                     </div>
                     <div>
                         <input type="email" name="email" placeholder="Enter your email" value= {this.state.email} onChange={this.handleChange} required/>
@@ -72,7 +60,7 @@ export default class RegistrationForm extends Component {
                     </div>
                     <div>
                         <div>
-                             <button type = "submit">Register</button>
+                             <button type = "submit">Login</button>
                         </div>
                     </div>
                 </form>
@@ -81,3 +69,5 @@ export default class RegistrationForm extends Component {
     }
 
 }
+
+export default LoginForm

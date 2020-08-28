@@ -60,7 +60,7 @@ function App() {
   }
   
   return (
-    <div className="App">
+    <div className="App" >
       <Router history={history}>
         <Route exact path='/' handleLogin={handleLogin} render={props => <Landing/>} />
         <ProtectedRoute exact path='/home' user={user} component={Home} handleLogout={handleLogout}/>      
