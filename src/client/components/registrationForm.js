@@ -68,7 +68,10 @@ export default class RegistrationForm extends Component {
                         <input type="password" name="password" placeholder="Create a password" value= {this.state.password} onChange={this.handleChange} required/>
                     </div>
                     <div>
-                        <button type = "submit">Register</button>
+                        <div>
+                             <button type = "submit">Register</button>
+                        </div>
+                       
                     </div>
                 </form>
             </div>
@@ -76,4 +79,3 @@ export default class RegistrationForm extends Component {
     }
 
 }
-​export default RegistrationForm

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import './app.css';
-import './friends.json';
 import axios from 'axios';
 import {Form, FormGroup} from 'reactstrap'
-import Box from '@material-ui/core/Box'  
+
 
 
 export default class AnswerFriendRequest extends Component {
@@ -104,4 +102,4 @@ requestAccepted(id) {
     }))
   }
 }
-export default AnswerFriendRequest
+ 
