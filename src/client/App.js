@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
+import { Router, Route, useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 const jwtDecode = require('jwt-decode');
 
@@ -8,9 +8,6 @@ import './app.css';
 import Landing from './components/Landing';
 import Home from './components/Home';
 import ProtectedRoute from './components/ProtectedRoute';
-import AnswerFriendRequest from './components/answerFriendRequest';
-import RegistrationForm from './components/registrationForm'
-
 
 //add custom routes
 import PendingFriendRequests from './components/friendRequestStatus/FriendRequestStatus';
