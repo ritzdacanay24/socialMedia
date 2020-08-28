@@ -8,6 +8,9 @@ import './app.css';
 import Landing from './components/Landing';
 import Home from './components/Home';
 import ProtectedRoute from './components/ProtectedRoute';
+import AnswerFriendRequest from './components/answerFriendRequest';
+import RegistrationForm from './components/registrationForm'
+
 
 //add custom routes
 import PendingFriendRequests from './components/friendRequestStatus/FriendRequestStatus';
@@ -57,12 +60,13 @@ function App() {
   }
   
   return (
-    <div className="App">
+    <div className="App" >
       <Router history={history}>
         <Route exact path='/' handleLogin={handleLogin} render={props => <Landing {...props} user={user} handleLogin={handleLogin}  />} />
         <ProtectedRoute exact path='/home' user={user} component={Home} handleLogout={handleLogout}/>      
         <ProtectedRoute exact path='/PendingFriendRequests' user={user} component={PendingFriendRequests}/>      
       </Router>
+      
     </div>
   );
 }
