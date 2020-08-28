@@ -19,44 +19,31 @@ class Post extends Component {
         })
     }
 
-    addNewPost = () => { 
-        alert(this.state.newPost);
-    
+    addNewPost = () => {
         Axios.post('http://localhost:5000/api/posts/', {
-            "userId": "5f4445a98f96d95afad4fdc6",
+            "userId": this.props.user._id,
             "comment": this.state.newPost
-        
-})
-            .then(res => {
-               
-            
-            }, function (err) {
-                alert('Something went wrong.')
-            })
+        }).then(res => {
+            alert('Thanks for posting')
+        }, function (err) {
+            alert('Something went wrong.')
+        })
     }
 
     //deletePost = () => {
-     //   this.props.deletePost
+    //   this.props.deletePost
     //}
-
-    
 
     render() {
         return (
             <div>
-                <Container className="themed-container">
-                    <Row style={{ padding: "20px" }}>
-                        <Col md="16" md={{ size: 8, offset: 6 }}>
-                            <form id="postForm">
-                                <FormGroup>
-                                    <Label for="exampleText">Create Post</Label>
-                                    <Input type="textarea" name="text" id="exampleText" placeholder="Post" onChange={this.commentOnHandler} />
-                                </FormGroup>
-                                <Button outline color="success" onClick={this.addNewPost}>Comment</Button>
-                            </form>
-                        </Col>
-                    </Row>
-                </Container>
+                <form id="postForm">
+                    <FormGroup>
+                        <Label for="postText">Create Post</Label>
+                        <Input type="textarea" name="text" id="postText" placeholder="Say something tell the people what on your mind this is where you will make a post. " onChange={this.commentOnHandler} />
+                    </FormGroup>
+                    <Button outline color="success" onClick={this.addNewPost}>Comment</Button>
+                </form>
             </div>
         )
     }
