@@ -10,8 +10,8 @@ const Home = props => {
         <div className="row">
           <div className="col-9 col-sm-12"><Navigation user={props.userInfo} /></div>
         </div>
-        <div className="row">
-          <div className="col-lg-3" style={{ padding: "50px" }}>
+        <div className="row" style={{ paddingTop: "50px" }}>
+          <div className="col-lg-3">
             <div className="text-center">
               <img src='/src/client/assets/images/mandalorian.jpg' alt="John Doe" className="mr-3 mt-3 rounded-circle shadow-lg p-4 mb-4 bg-white rounded" style={{ width: "230px" }} />
             </div>
@@ -25,8 +25,10 @@ const Home = props => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 bg-danger">
-              <div>Friend feed holder</div>
+          <div className="col-lg-6 shadow-lg p-4 mb-4">
+              <div><Post user={props.userInfo}/></div>
+              <br></br>
+              <div> friend feed holder </div>
           </div>
           <div className="col-lg-3" style={{ padding: "50px" }}>
               <div>Top Friends holder</div>
