@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 
 import Post from './post';
+import AnswerFriendRequest from './AnswerFriendRequest';
 
 const Home = props => {
   return (
@@ -32,10 +33,17 @@ const Home = props => {
           </div>
           <div className="col-lg-3" style={{ padding: "50px" }}>
               <div>Top Friends holder</div>
-              <div>Chat holder</div>
+              <div>
+                <hr />
+                <h4>Accept of Decline</h4>
+                <AnswerFriendRequest currentUserId={props.userInfo._id}/>
+              </div>
           </div>
         </div>
+        
       </div>
+
+      
 
 
       {/* <h1>Home</h1>
