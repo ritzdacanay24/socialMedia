@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
 import axios from 'axios';
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
+import Navigation from '../Navigation'
 
-export default class FriendRequestStatus extends React.Component {
+export default class FriendRequestStatus extends Component {
 
     constructor(props) {
-        super(props)
+        super(props.userInfo._id)
+
         this.state = {
             friendRequestStatus: 'pending',
             firstName: 'null',
@@ -18,7 +20,7 @@ export default class FriendRequestStatus extends React.Component {
 
     getFriendRequestStatus = async () => {
 
-        axios.get(`http://localhost:5000/api/friends/pendingRequests/${this.props.id}`)
+        axios.get(`http://localhost:5000/api/friends/pendingRequests/${this.props.userInfo._id}`)
             .then(result => {
                 console.log(result.data)
                 //this.setState({ friendRequestStatus: 'confirmed' })
@@ -38,6 +40,7 @@ export default class FriendRequestStatus extends React.Component {
     render() {
         return (
             <div>
+                <Navigation user={this.props.userInfo} />
                 {this.state.pendingFriends.map((item) =>
                     <Card>
                         <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
