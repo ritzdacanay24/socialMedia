@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './app.css';
 import ReactImage from './react.png';
+import Post from './components/post'
+
+
+
 
 export default class App extends Component {
   state = { username: null };
@@ -11,13 +15,13 @@ export default class App extends Component {
       .then(user => this.setState({ username: user.username }));
   }
 
+  
+
   render() {
     const { username } = this.state;
     return (
       <div>
-        Test
-        {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
-        <img src={ReactImage} alt="react" />
+        <Post addNewPost="hello"></Post>
       </div>
     );
   }
