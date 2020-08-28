@@ -11,6 +11,10 @@ import AnswerFriendRequest from './components/answerFriendRequest';
 import RegistrationForm from './components/registrationForm'
 
 
+//add custom routes
+import PendingFriendRequests from './components/pendingFriendRequests/PendingFriendRequests';
+
+
 function App() {
   const cookieName = 'socialMedia';
   const [cookies, setCookie, removeCookie] = useCookies([cookieName]);
@@ -60,6 +64,7 @@ function App() {
       <Router history={history}>
         <Route exact path='/' handleLogin={handleLogin} render={props => <Landing/>} />
         <ProtectedRoute exact path='/home' user={user} component={Home} handleLogout={handleLogout}/>      
+        <ProtectedRoute exact path='/PendingFriendRequests' user={user} component={PendingFriendRequests}/>      
       </Router>
       
     </div>
