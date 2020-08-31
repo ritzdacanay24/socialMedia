@@ -4,16 +4,21 @@ import LoginForm from '../components/LoginForm'
 
 
 const Landing = props => {
+
+  const handleSuccessfulAuth = e => {
+    e.preventDefault();
+  }
+
   return (
     <div>
       <div>
       <h1>Landing</h1>
       </div>
       <div>
-        <RegistrationForm/>
+        <RegistrationForm handleSuccessfulAuth={handleSuccessfulAuth}/>
       </div>
       <div>
-        <LoginForm/>
+        <LoginForm setCookieApp={props.setCookieApp} handleLogin={props.handleLogin}/>
       </div>
 
       <button onClick={props.handleLogin}>This is a log in test button. Remember to set the cookie!</button>
