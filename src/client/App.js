@@ -23,7 +23,7 @@ function App() {
   }
 
   //checks if cookie is found
-  if(!isEmpty(cookies)){
+  if (!isEmpty(cookies)) {
     try {
       //jwtDecode just grabs the token. It does not validate the token.
       //userInfo will hold the user info in an object. If no jwt found, userInfo will hold the false value.
@@ -35,16 +35,28 @@ function App() {
   }
 
   const [user, setUser] = useState(userInfo);
-  
-  const handleLogin = e => {
-    e.preventDefault();
-    setUser(user);
 
-    //if user is found, send to home component
-    if(user){
+
+
+
+  const handleLogin = e => {
+    //e.preventDefault();
+
+    try {
+      //jwtDecode just grabs the token. It does not validate the token.
+      //userInfo will hold the user info in an object. If no jwt found, userInfo will hold the false value.
+      userInfo = jwtDecode(cookies.socialMedia);
+      setUser(userInfo);
+
       history.push("/home");
       window.location.reload(false);
+    } catch {
+      //if token is not found, send user to landing page.
+      history.push("/");
     }
+    //if user is found, send to home component
+
+
   }
 
   const handleLogout = e => {
@@ -55,15 +67,20 @@ function App() {
     window.location.reload(false);
     removeCookie(cookieName, { path: '/' });
   }
-  
+
+  const setCookieApp = (jwt) => {
+    let d = new Date();
+    setCookie(cookieName, jwt)
+  };
+
   return (
     <div className="App" >
       <Router history={history}>
-        <Route exact path='/' handleLogin={handleLogin} render={props => <Landing {...props} user={user} handleLogin={handleLogin}  />} />
-        <ProtectedRoute exact path='/home' user={user} component={Home} handleLogout={handleLogout}/>      
-        <ProtectedRoute exact path='/PendingFriendRequests' user={user} component={PendingFriendRequests}/>      
+        <Route exact path='/' handleLogin={handleLogin} render={props => <Landing {...props} user={user} handleLogin={handleLogin} setCookieApp={setCookieApp} />} />
+        <ProtectedRoute exact path='/home' user={user} component={Home} handleLogout={handleLogout} />
+        <ProtectedRoute exact path='/PendingFriendRequests' user={user} component={PendingFriendRequests} />
       </Router>
-      
+
     </div>
   );
 }
