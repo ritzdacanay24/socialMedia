@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
+import { Router, Route, useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 const jwtDecode = require('jwt-decode');
 
 import './app.css';
+
 import Landing from './components/Landing';
 import Home from './components/Home';
 import ProtectedRoute from './components/ProtectedRoute';
+
+//add custom routes
+import PendingFriendRequests from './components/friendRequestStatus/FriendRequestStatus';
 
 function App() {
   const cookieName = 'socialMedia';
@@ -53,11 +57,13 @@ function App() {
   }
   
   return (
-    <div className="App">
+    <div className="App" >
       <Router history={history}>
         <Route exact path='/' handleLogin={handleLogin} render={props => <Landing {...props} user={user} handleLogin={handleLogin}  />} />
         <ProtectedRoute exact path='/home' user={user} component={Home} handleLogout={handleLogout}/>      
+        <ProtectedRoute exact path='/PendingFriendRequests' user={user} component={PendingFriendRequests}/>      
       </Router>
+      
     </div>
   );
 }
