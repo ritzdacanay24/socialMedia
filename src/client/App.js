@@ -57,7 +57,7 @@ function App() {
   }
   
   return (
-    <div className="App" >
+    <div className="app" >
       <Router history={history}>
         <Route exact path='/' handleLogin={handleLogin} render={props => <Landing {...props} user={user} handleLogin={handleLogin}  />} />
         <ProtectedRoute exact path='/home' user={user} component={Home} handleLogout={handleLogout}/>      

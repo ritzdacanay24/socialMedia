@@ -47,7 +47,7 @@ class LoginForm extends React.Component{
 
     render() {
         return (
-            <div>
+            <div className = "loginText">
                 <form onSubmit = {this.handleSubmit}>
                     <div>
                         <h4>Existing User Login</h4>
@@ -60,7 +60,7 @@ class LoginForm extends React.Component{
                     </div>
                     <div>
                         <div>
-                             <button type = "submit">Login</button>
+                             <button className = "button" type = "submit">Login</button>
                         </div>
                     </div>
                 </form>

@@ -53,7 +53,7 @@ export default class RegistrationForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className = 'newUserText'>
                 <form onSubmit = {this.handleSubmit}>
                     <div>
                         <h4>New User Registration</h4>
@@ -72,7 +72,7 @@ export default class RegistrationForm extends Component {
                     </div>
                     <div>
                         <div>
-                             <button type = "submit">Register</button>
+                             <button className = "button" type = "submit">Register</button>
                         </div>
                     </div>
                 </form>
