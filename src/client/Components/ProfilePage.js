@@ -33,7 +33,7 @@ function ProfilePage(props) {
             <Row id="profileCon">
                 <Col><h1>{responseData.firstName}</h1></Col>
                 <Col>
-            <Button>View Friends</Button>
+            <Button>View All Friends</Button>
             </Col>
             </Row>
         </div>
