@@ -14,6 +14,9 @@ const Navigation = props => {
             <a class="nav-link" href="/PendingFriendRequests">Pending Friend Requests</a>
           </li> 
           <li class="nav-item">
+            <a class="nav-link" href="/FriendRequestsStatus">Friend List</a>
+          </li> 
+          <li class="nav-item">
             <a class="nav-link" href="/AddFriend">Add Friend</a>
           </li>
           <li class="nav-item">
