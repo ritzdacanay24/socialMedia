@@ -20,7 +20,7 @@ class ViewPosts extends Component {
 
   getPosts = () => {
     Axios.get('http://localhost:5000/api/posts/viewFriendPosts/' + this.props.userInfo._id).then(res => {
-      this.setState({ friendPosts: res.data })
+      this.setState({ friendPosts: res.data });
     }, function (err) {
       alert('Something went wrong.')
     })
@@ -35,7 +35,7 @@ class ViewPosts extends Component {
   }
 
   setPosts = () => {
-    return this.state.friendPosts || this.state.friendPosts.map((post, index) =>
+    return this.state.friendPosts.length && this.state.friendPosts.map((post, index) =>
       <Card key={index}>
         <CardBody>
           <Media>
@@ -45,7 +45,7 @@ class ViewPosts extends Component {
             <Media body>
               <Media>
                 <div style={{ textAlign: "left", marginLeft: "30px" }}>
-                  <b>{post.firstName} {post.lastName}</b> <small> 35 mins ago</small>
+                  <b>{post.firstName} {post.lastName}</b> <small> {post.createdDate}</small>
                   <p style={{ fontWeight: "500" }}>{post.comment}</p>
                 </div>
               </Media>

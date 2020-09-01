@@ -41,7 +41,7 @@ export default class FriendRequestStatus extends Component {
         return (
             <div>
                 <Navigation user={this.props.userInfo} />
-                { this.state.pendingFriends || this.state.pendingFriends.map((item) =>
+                { this.state.pendingFriends.length &&  this.state.pendingFriends.map((item) =>
                     <Card>
                         <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
                         <CardBody>

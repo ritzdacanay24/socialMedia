@@ -38,7 +38,7 @@ class AddFriends extends Component {
                 <Container className="themed-container">
                     <Row>
                         {
-                            this.state.users.map((user, index) =>
+                            this.state.users.length && this.state.users.map((user, index) =>
                                 <Col xs="6" sm="4" lg="4" style={{ padding: "15px", cursor: "pointer", color: "white", opacity: "0.8" }}>
                                     <div style={{ width: "350px", height: "250px", backgroundColor: "#580000", padding: "15px" }}>
                                         <img style={{ width: "100px", height: "100px" }} src={user.imageProfile} />
