@@ -34,7 +34,7 @@ class LoginForm extends React.Component{
             .then(response => {
 
                 this.props.setCookieApp(response.data.token);
-                this.props.handleLogin()
+                this.props.handleLogin(event)
 
                 if (response.data.logged_in) {
                     this.props.handleSuccessfulAuth(response.data);
