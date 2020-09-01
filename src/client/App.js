@@ -40,7 +40,7 @@ function App() {
 
 
   const handleLogin = e => {
-    //e.preventDefault();
+    e.preventDefault();
 
     try {
       //jwtDecode just grabs the token. It does not validate the token.
