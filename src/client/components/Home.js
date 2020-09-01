@@ -9,7 +9,7 @@ const Home = props => {
     <>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-9 col-sm-12"><Navigation user={props.userInfo} /></div>
+          <div className="col-9 col-sm-12"><Navigation user={props.userInfo} handleLogout={props.handleLogout}/></div>
         </div>
         <div className="row" style={{ paddingTop: "50px" }}>
           <div className="col-lg-3">
