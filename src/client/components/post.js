@@ -10,7 +10,8 @@ class Post extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            "newPost": ""
+            "newPost": "",
+            friendPosts: []
         }
     }
 
@@ -25,15 +26,19 @@ class Post extends Component {
             "userId": this.props.user._id,
             "comment": this.state.newPost
         }).then(res => {
-            alert('Thanks for posting')
+            this.getPosts()
         }, function (err) {
             alert('Something went wrong.')
         })
     }
 
-    //deletePost = () => {
-    //   this.props.deletePost
-    //}
+    getPosts = () => {
+        Axios.get('http://localhost:5000/api/posts/viewFriendPosts/' + this.props.user._id).then(res => {
+            this.setState({ friendPosts: res.data });
+        }, function (err) {
+            alert('Something went wrong.')
+        })
+    }
 
     render() {
         return (
@@ -46,7 +51,10 @@ class Post extends Component {
                     <Button outline color="success" onClick={this.addNewPost}>Comment</Button>
                 </form>
                 <hr />
-                <ViewPosts userInfo={this.props.user}/>
+                <div style={{ maxHeight: "600px", overflow: "auto" }}>
+                    <ViewPosts userInfo={this.props.user} getPosts={this.getPosts} friendPosts={this.state.friendPosts} />
+                </div>
+
             </div>
         )
     }
