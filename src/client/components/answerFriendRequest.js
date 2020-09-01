@@ -82,7 +82,7 @@ export default class AnswerFriendRequest extends Component {
 
   render() {
     return (
-      this.state.friendRequests || this.state.friendRequests.map((request, index) => {
+      this.state.friendRequests.length && this.state.friendRequests.map((request, index) => {
         return (
           <span class="border">
             <Form>

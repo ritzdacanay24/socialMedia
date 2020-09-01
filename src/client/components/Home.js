@@ -22,6 +22,8 @@ const Home = props => {
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>
                   <p className="card-text">Profile Info</p>
+                  <p className="card-text">{props.userInfo.firstName} {props.userInfo.lastName}</p>
+                  <p className="card-text">{props.userInfo.email}</p>
                 </div>
               </div>
             </div>
