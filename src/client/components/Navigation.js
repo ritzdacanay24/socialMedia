@@ -10,9 +10,12 @@ const Navigation = props => {
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/PendingFriendRequests">Pending Friend Requests</a>
-          </li>
+          </li> 
           <li class="nav-item">
             <a class="nav-link" href="/AddFriend">Add Friend</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/ProfilePage">Profile</a>
           </li>
         </ul>
       </nav>
