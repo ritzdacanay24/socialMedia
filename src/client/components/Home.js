@@ -22,14 +22,14 @@ const Home = props => {
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>
                   <p className="card-text">Profile Info</p>
+                  <p className="card-text">{props.userInfo.firstName} {props.userInfo.lastName}</p>
+                  <p className="card-text">{props.userInfo.email}</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-lg-6 shadow-lg p-4 mb-4">
-              <div><Post user={props.userInfo}/></div>
-              <br></br>
-              <div> friend feed holder </div>
+              <Post user={props.userInfo}/>
           </div>
           <div className="col-lg-3" style={{ padding: "50px" }}>
               <div>Top Friends holder</div>

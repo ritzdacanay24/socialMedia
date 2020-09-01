@@ -3,6 +3,8 @@ import Axios from 'axios';
 import { Media, Card, CardBody } from 'reactstrap';
 import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 
+import DeletePost from '../Delete'
+
 class ViewPosts extends Component {
 
   constructor(props) {
@@ -17,15 +19,22 @@ class ViewPosts extends Component {
   }
 
   getPosts = () => {
-    Axios.get('http://localhost:5000/api/posts/viewFriendPosts/' + this.props.userInfo._id).then(res => {
-      this.setState({ friendPosts: res.data })
+    this.props.getPosts();
+  }
+
+  onDelete = (id) => {
+    Axios.delete('http://localhost:5000/api/posts/' + id).then(res => {
+      this.getPosts()
     }, function (err) {
       alert('Something went wrong.')
     })
   }
 
   setPosts = () => {
-    return this.state.friendPosts && this.state.friendPosts.map((post, index) =>
+    if(!this.props.friendPosts.length){
+      return "No Posts"
+    }
+    return this.props.friendPosts.length && this.props.friendPosts.map((post, index) =>
       <Card key={index}>
         <CardBody>
           <Media>
@@ -35,7 +44,7 @@ class ViewPosts extends Component {
             <Media body>
               <Media>
                 <div style={{ textAlign: "left", marginLeft: "30px" }}>
-                  <b>{post.firstName} {post.lastName}</b> <small> 35 mins ago</small>
+                  <b>{post.firstName} {post.lastName}</b> <small> {post.createdDate}</small>
                   <p style={{ fontWeight: "500" }}>{post.comment}</p>
                 </div>
               </Media>
@@ -43,7 +52,7 @@ class ViewPosts extends Component {
                 <span onClick={() => this.props.likeOnHandler(post)}> <FaThumbsUp /> {post.likes} </span> {' '}
                 <span onClick={() => this.props.dislikeOnHandler(post)} style={{ marginLeft: "10px" }}> <FaThumbsDown /> {post.dislikes} </span>
                 <br /><br />
-                <button class="btn btn-danger"> Delete Post </button>
+                {this.props.userInfo._id == post.id && <DeletePost class="btn btn-danger" onDelete={this.onDelete} id={post._id}> Delete Post </DeletePost>}
               </div>
             </Media>
           </Media>

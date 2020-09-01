@@ -2,7 +2,6 @@ import React from 'react';
 
 const Navigation = props => {
   
-  console.log(props)
   return (
     <>
       <nav class="navbar navbar-expand-sm bg-dark justify-content-center">
@@ -14,7 +13,7 @@ const Navigation = props => {
             <a class="nav-link" href="/PendingFriendRequests">Pending Friend Requests</a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link" href="/AddFriend">Add Friend</a>
+            <a class="nav-link" href="/AddFriends">Add Friend</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/ProfilePage">Profile</a>
