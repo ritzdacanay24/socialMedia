@@ -27,9 +27,7 @@ function ProfilePage(props) {
     }, [fetchData])
 
 
-    showData((event) => {
-        console.log({responseData})
-    })
+  
 
     return (
         
@@ -37,7 +35,7 @@ function ProfilePage(props) {
             <Row id="profileCon">
                 <Col><h1>{responseData.firstName}</h1></Col>
                 <Col>
-            <Button onClick={showData()}>log data</Button>
+            <Button>log data</Button>
             <Form>
                 <ul>
                     <li>
@@ -51,6 +49,7 @@ function ProfilePage(props) {
                     </li>
                 </ul>
             </Form>
+            <Button>Add More Info</Button>
             </Col>
             </Row>
         </div>
