@@ -11,16 +11,13 @@ const Landing = props => {
 
   return (
     <div>
+      <br/>
       <div>
-      <h1>Landing</h1>
+        <LoginForm setCookieApp={props.setCookieApp} handleLogin={props.handleLogin}/>
       </div>
       <div>
         <RegistrationForm handleSuccessfulAuth={handleSuccessfulAuth}/>
       </div>
-      <div>
-        <LoginForm setCookieApp={props.setCookieApp} handleLogin={props.handleLogin}/>
-      </div>
-
       <button onClick={props.handleLogin}>This is a log in test button. Remember to set the cookie!</button>
 
     </div>

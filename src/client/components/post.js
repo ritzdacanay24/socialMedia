@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 import Axios from "axios"
+import ViewPosts from '../components/viewPosts/ViewPosts'
 //import PostDetails from './commentDetails';
 //import { Container, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
 
@@ -44,6 +45,8 @@ class Post extends Component {
                     </FormGroup>
                     <Button outline color="success" onClick={this.addNewPost}>Comment</Button>
                 </form>
+                <hr />
+                <ViewPosts userInfo={this.props.user}/>
             </div>
         )
     }
