@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import {Container, Col, Row, Button} from 'reactstrap';
+import {Form, Col, Row, Button} from 'reactstrap';
 import axios from 'axios';
+import Navigation from './Navigation'
 
 
 function ProfilePage(props) {
@@ -27,13 +28,29 @@ function ProfilePage(props) {
     }, [fetchData])
 
 
+  
+
     return (
-        
+        <Navigation/>
         <div>
             <Row id="profileCon">
                 <Col><h1>{responseData.firstName}</h1></Col>
                 <Col>
-            <Button>View Friends</Button>
+            <Button>log data</Button>
+            <Form>
+                <ul id="dataList">
+                    <li>
+                        First Name: {responseData.firstName}
+                    </li>
+                    <li>
+                        Last Name: {responseData.lastName}
+                    </li>
+                    <li>
+                        Email: {responseData.email}
+                    </li>
+                </ul>
+            </Form>
+            <Button>Add More Info</Button>
             </Col>
             </Row>
         </div>
