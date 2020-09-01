@@ -31,8 +31,9 @@ function ProfilePage(props) {
   
 
     return (
-        <Navigation/>
+        
         <div>
+            <Navigation/>
             <Row id="profileCon">
                 <Col><h1>{responseData.firstName}</h1></Col>
                 <Col>
