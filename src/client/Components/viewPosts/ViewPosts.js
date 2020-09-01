@@ -24,6 +24,14 @@ class ViewPosts extends Component {
     })
   }
 
+  onDelete = (id) => {
+    Axios.delete('http://localhost:5000/api/posts/' + id).then(res => {
+      this.getPosts()
+    }, function (err) {
+      alert('Something went wrong.')
+    })
+  }
+
   setPosts = () => {
     return this.state.friendPosts && this.state.friendPosts.map((post, index) =>
       <Card key={index}>
@@ -43,7 +51,7 @@ class ViewPosts extends Component {
                 <span onClick={() => this.props.likeOnHandler(post)}> <FaThumbsUp /> {post.likes} </span> {' '}
                 <span onClick={() => this.props.dislikeOnHandler(post)} style={{ marginLeft: "10px" }}> <FaThumbsDown /> {post.dislikes} </span>
                 <br /><br />
-                <button class="btn btn-danger"> Delete Post </button>
+                <button class="btn btn-danger" onDelete={this.onDelete} id={post._id}> Delete Post </button>
               </div>
             </Media>
           </Media>
