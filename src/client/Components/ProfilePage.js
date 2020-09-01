@@ -31,29 +31,32 @@ function ProfilePage(props) {
   
 
     return (
-        
         <div>
-            <Navigation/>
-            <Row id="profileCon">
+        <Navigation/>
+        <div  id="profileCon">
+            <Row>
                 <Col><h1>{responseData.firstName}</h1></Col>
-                <Col>
-            <Button>log data</Button>
-            <Form>
-                <ul id="dataList">
+            </Row>
+            <Row>
+            <Col>
+            <Form className="card">
+            
+                <ul id="dataList" >
                     <li>
-                        First Name: {responseData.firstName}
+                        <fr><fi>First Name:</fi> {responseData.firstName}</fr>
                     </li>
                     <li>
-                        Last Name: {responseData.lastName}
+                        <fr><fi>Last Name:</fi> {responseData.lastName}</fr>
                     </li>
                     <li>
-                        Email: {responseData.email}
+                        <fr><fi>Email:</fi> {responseData.email}</fr>
                     </li>
                 </ul>
             </Form>
             <Button>Add More Info</Button>
             </Col>
             </Row>
+        </div>
         </div>
        
 
