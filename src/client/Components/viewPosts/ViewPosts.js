@@ -3,6 +3,8 @@ import Axios from 'axios';
 import { Media, Card, CardBody } from 'reactstrap';
 import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 
+import DeletePost from '../Delete'
+
 class ViewPosts extends Component {
 
   constructor(props) {
@@ -33,7 +35,7 @@ class ViewPosts extends Component {
   }
 
   setPosts = () => {
-    return this.state.friendPosts && this.state.friendPosts.map((post, index) =>
+    return this.state.friendPosts || this.state.friendPosts.map((post, index) =>
       <Card key={index}>
         <CardBody>
           <Media>
@@ -51,7 +53,7 @@ class ViewPosts extends Component {
                 <span onClick={() => this.props.likeOnHandler(post)}> <FaThumbsUp /> {post.likes} </span> {' '}
                 <span onClick={() => this.props.dislikeOnHandler(post)} style={{ marginLeft: "10px" }}> <FaThumbsDown /> {post.dislikes} </span>
                 <br /><br />
-                <button class="btn btn-danger" onDelete={this.onDelete} id={post._id}> Delete Post </button>
+                <DeletePost class="btn btn-danger" onDelete={this.onDelete} id={post._id}> Delete Post </DeletePost>
               </div>
             </Media>
           </Media>
