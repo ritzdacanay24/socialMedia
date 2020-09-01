@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 
 class LoginForm extends React.Component{
     constructor(props){
@@ -19,20 +19,23 @@ class LoginForm extends React.Component{
             });
         }
         handleSubmit(event){
+            
+        event.preventDefault();
             const {email, password} = this.state
 
-            axios.get(`http://localhost:5000/api/users/${loggedInUserId}`,
+            Axios.post('http://localhost:5000/api/auth/',
                 {
-                    user: {
                         email: email,
                         password: password
-                        }
-                },
-
-            {withCredentials: true}
+                        
+                }
 
             ) 
             .then(response => {
+
+                this.props.setCookieApp(response.data.token);
+                this.props.handleLogin(event)
+
                 if (response.data.logged_in) {
                     this.props.handleSuccessfulAuth(response.data);
                   }
@@ -41,7 +44,6 @@ class LoginForm extends React.Component{
                 console.log("Oops! something went wrong, check your credentials and try again.", error);
 
             });
-        event.preventDefault();
 
         }
 
