@@ -47,23 +47,27 @@ class LoginForm extends React.Component{
 
     render() {
         return (
-            <div className = "loginText">
-                <form onSubmit = {this.handleSubmit}>
+            <div className = "loginWrap">
+                <div className = "input">
+                <form className = "input" onSubmit = {this.handleSubmit}>
                     <div>
-                        <h4>Existing User Login</h4>
+                        <h5>Existing Mandalorian Login</h5>
                     </div>
                     <div>
-                        <input type="email" name="email" placeholder="Enter your email" value= {this.state.email} onChange={this.handleChange} required/>
+                        <input type="text" name="email" placeholder="Enter your email" value= {this.state.email} onChange={this.handleChange} required/>
                     </div>
                     <div>
-                        <input type="password" name="password" placeholder="Create a password" value= {this.state.password} onChange={this.handleChange} required/>
+                        <input type="password" name="password" placeholder="Enter your Access Code" value= {this.state.password} onChange={this.handleChange} required/>
                     </div>
                     <div>
                         <div>
-                             <button className = "button" type = "submit">Login</button>
+                            <span>
+                             <button className ="submit" type = "submit">Authorize</button>
+                            </span>
                         </div>
                     </div>
                 </form>
+                </div>
             </div>
         )
     }
