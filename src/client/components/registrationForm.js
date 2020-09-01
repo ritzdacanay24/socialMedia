@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 
 
 export default class RegistrationForm extends Component {
@@ -23,22 +23,22 @@ export default class RegistrationForm extends Component {
             });
         }
         handleSubmit(event){
+            event.preventDefault();
             const {email, password, firstName, lastName} = this.state
 
-            axios.post(`http://localhost:5000/api/users`,
+            Axios.post(`http://localhost:5000/api/users/`,
                 {
-                    user: {
+                    
                         email: email,
                         firstName: firstName,
                         lastName: lastName,
                         password: password
-                        }
-                },
-
-            {withCredentials: true}
+                        
+                }
 
             ) 
             .then(response => {
+                alert('registered')
                 if (response.data.status === "created") {
                     this.props.handleSuccessfulAuth(response.data);
                   }
@@ -47,7 +47,6 @@ export default class RegistrationForm extends Component {
                 console.log("Registration error, you may not see the high council", error);
 
             });
-        event.preventDefault();
 
         }
 
