@@ -70,3 +70,7 @@ input[type=text], input[type=password] {
 h5{
   color:rgb(201, 194, 194)
 }
+
+#dataList{
+  list-style: none;
+}

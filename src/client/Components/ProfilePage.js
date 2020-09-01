@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {Form, Col, Row, Button} from 'reactstrap';
 import axios from 'axios';
+import Navigation from './Navigation'
 
 
 function ProfilePage(props) {
@@ -30,22 +31,22 @@ function ProfilePage(props) {
   
 
     return (
-        
+        <Navigation/>
         <div>
             <Row id="profileCon">
                 <Col><h1>{responseData.firstName}</h1></Col>
                 <Col>
             <Button>log data</Button>
             <Form>
-                <ul>
+                <ul id="dataList">
                     <li>
-                        {responseData.firstName}
+                        First Name: {responseData.firstName}
                     </li>
                     <li>
-                        {responseData.lastName}
+                        Last Name: {responseData.lastName}
                     </li>
                     <li>
-                        {responseData.email}
+                        Email: {responseData.email}
                     </li>
                 </ul>
             </Form>
