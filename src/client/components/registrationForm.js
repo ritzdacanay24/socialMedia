@@ -53,26 +53,28 @@ export default class RegistrationForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className = "registerWrap">
                 <form onSubmit = {this.handleSubmit}>
                     <div>
-                        <h4>New User Registration</h4>
+                        <h5>New Bounty Hunter Registration</h5>
                     </div>
                     <div>
-                        <input type="firstName" name="firstName" placeholder="Enter your first name" value= {this.state.firstName} onChange={this.handleChange} required/>
+                        <input type="text" name="firstName" placeholder="Enter your first name" value= {this.state.firstName} onChange={this.handleChange} required/>
                     </div>
                     <div>
-                        <input type="lastName" name="lastName" placeholder="Enter your last name" value= {this.state.lastName} onChange={this.handleChange} required/>
+                        <input type="text" name="lastName" placeholder="Enter your last name" value= {this.state.lastName} onChange={this.handleChange} required/>
                     </div>
                     <div>
-                        <input type="email" name="email" placeholder="Enter your email" value= {this.state.email} onChange={this.handleChange} required/>
+                        <input type="text" name="email" placeholder="Enter your email" value= {this.state.email} onChange={this.handleChange} required/>
                     </div>
                     <div>
-                        <input type="password" name="password" placeholder="Create a password" value= {this.state.password} onChange={this.handleChange} required/>
+                        <input type="password" name="password" placeholder="Create an Access Code" value= {this.state.password} onChange={this.handleChange} required/>
                     </div>
                     <div>
                         <div>
-                             <button type = "submit">Register</button>
+                            <span>
+                                 <button className ="submit" type = "submit">Generate</button>
+                            </span>
                         </div>
                     </div>
                 </form>
