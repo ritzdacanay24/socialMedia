@@ -11,6 +11,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 //add custom routes
 import PendingFriendRequests from './components/friendRequestStatus/FriendRequestStatus';
+import ProfilePage from './components/ProfilePage';
 
 function App() {
   const cookieName = 'socialMedia';
@@ -79,6 +80,7 @@ function App() {
         <Route exact path='/' handleLogin={handleLogin} render={props => <Landing {...props} user={user} handleLogin={handleLogin} setCookieApp={setCookieApp} />} />
         <ProtectedRoute exact path='/home' user={user} component={Home} handleLogout={handleLogout} />
         <ProtectedRoute exact path='/PendingFriendRequests' user={user} component={PendingFriendRequests} />
+        <ProtectedRoute exact path='/ProfilePage' user={user} component={ProfilePage} />
       </Router>
 
     </div>
