@@ -19,11 +19,7 @@ class ViewPosts extends Component {
   }
 
   getPosts = () => {
-    Axios.get('http://localhost:5000/api/posts/viewFriendPosts/' + this.props.userInfo._id).then(res => {
-      this.setState({ friendPosts: res.data });
-    }, function (err) {
-      alert('Something went wrong.')
-    })
+    this.props.getPosts();
   }
 
   onDelete = (id) => {
@@ -35,7 +31,10 @@ class ViewPosts extends Component {
   }
 
   setPosts = () => {
-    return this.state.friendPosts.length && this.state.friendPosts.map((post, index) =>
+    if(!this.props.friendPosts.length){
+      return "No Posts"
+    }
+    return this.props.friendPosts.length && this.props.friendPosts.map((post, index) =>
       <Card key={index}>
         <CardBody>
           <Media>
@@ -53,7 +52,7 @@ class ViewPosts extends Component {
                 <span onClick={() => this.props.likeOnHandler(post)}> <FaThumbsUp /> {post.likes} </span> {' '}
                 <span onClick={() => this.props.dislikeOnHandler(post)} style={{ marginLeft: "10px" }}> <FaThumbsDown /> {post.dislikes} </span>
                 <br /><br />
-                <DeletePost class="btn btn-danger" onDelete={this.onDelete} id={post._id}> Delete Post </DeletePost>
+                {this.props.userInfo._id == post.id && <DeletePost class="btn btn-danger" onDelete={this.onDelete} id={post._id}> Delete Post </DeletePost>}
               </div>
             </Media>
           </Media>
