@@ -72,6 +72,8 @@ export default class AnswerFriendRequest extends Component {
   }
 
   reqestDeclined() {
+    alert('Under construction');
+    return
     this.setState({ friendRequestStatus: "Declined" })
     axios({
       "method": "DELETE",
@@ -79,26 +81,34 @@ export default class AnswerFriendRequest extends Component {
     })
   }
 
+  getPendingFriends = () => {
+    return this.state.friendRequests.length > 0 && this.state.friendRequests.map((request, index) => {
+      return (
+        <div>
+          <Form>
+            <FormGroup>
+              <h5>{request.requestedByInfo.firstName} {request.requestedByInfo.lastName} sent you a friend request!</h5>
+            </FormGroup>
+            <FormGroup>
+              <h5>Would you like to Accept or Decline their request? </h5>
+            </FormGroup>
+            <FormGroup>
+              <button className="btn-danger btn" onClick={() => this.requestAccepted(request._id)}>Accept</button>
+              <button className="btn-dark btn text-right" onClick={() => this.reqestDeclined(request._id)}>Decline</button>
+            </FormGroup>
+          </Form>
+          <div className="hr-fade"></div>
+        </div>
+      )
+    })
+  }
 
   render() {
     return (
-      this.state.friendRequests.length && this.state.friendRequests.map((request, index) => {
-        return (
-          <span class="border">
-            <Form>
-              <FormGroup>
-                <h5>{request.requestedByInfo.firstName} {request.requestedByInfo.lastName} sent you a friend request!</h5>
-              </FormGroup>
-              <FormGroup>
-                <h5>Would you like to Accept or Decline their request? </h5>
-              </FormGroup>
-              <FormGroup>
-                <button onClick={() => this.requestAccepted(request._id)}>Accept</button>
-                <button onClick={() => this.reqestDeclined(request._id)}>Decline</button>
-              </FormGroup>
-            </Form>
-          </span>
-        )
-      }))
+      <div className="post shadow pendingFriendRequest">
+        {!this.state.friendRequests.length && <p> No pending friend requests! </p>}
+        {this.getPendingFriends()}
+      </div>
+    )
   }
 }
