@@ -4,6 +4,7 @@ const Navigation = props => {
   
   return (
     <>
+<<<<<<< HEAD
       <nav className="navbar navbar-expand-sm bg-dark justify-content-center">
         <ul className="navbar-nav">
           <li className="nav-item">
@@ -14,6 +15,15 @@ const Navigation = props => {
           </li> 
           <li className="nav-item">
             <a className="nav-link" href="/AddFriends">Add Friend</a>
+=======
+      <nav class="navbar navbar-expand-sm dark-red justify-content-center">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/Home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/AddFriends">Add Friend</a>
+>>>>>>> 02b8957de4f4d2b7ce02680400dfdd9a8466bb43
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/ProfilePage">Profile</a>

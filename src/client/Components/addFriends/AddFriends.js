@@ -27,6 +27,11 @@ class AddFriends extends Component {
 
     createFriendRequest = (user) => {
         Axios.post(`http://localhost:5000/api/friends/friendRequest/${this.props.userInfo._id}/${user._id}`).then(res => {
+            console.log(res)
+            if(res.data.errorMessage){
+                alert(res.data.errorMessage)
+                return 
+            }
             alert('Friend request submitted')
         })
     }
@@ -35,16 +40,16 @@ class AddFriends extends Component {
         return (
             <>
                 <Navigation user={this.props.userInfo} />
-                <Container className="themed-container">
+                <Container className="themed-container ">
                     <Row>
                         {
                             this.state.users.length && this.state.users.map((user, index) =>
-                                <Col xs="6" sm="4" lg="4" style={{ padding: "15px", cursor: "pointer", color: "white", opacity: "0.8" }}>
-                                    <div style={{ width: "350px", height: "250px", backgroundColor: "#580000", padding: "15px" }}>
-                                        <img style={{ width: "100px", height: "100px" }} src={user.imageProfile} />
-                                        <p>Name: {user.firstName}{user.lastName}</p>
+                                <Col xs="6" sm="4" lg="4" style={{ padding: "15px", cursor: "pointer", color: "white", borderRadius: "150px" }}>
+                                    <div style={{ width: "350px", height: "250px", backgroundColor: "RGB(88, 0, 0, 0.8)", padding: "15px", borderRadius: "20px" }}>
+                                        <img style={{ width: "100px", height: "100px" }} src={user.profileImage} />
+                                        <p>Name: {user.firstName} {user.lastName}</p>
                                         <p>Email: {user.email} </p>
-                                        <button onClick={() => this.createFriendRequest(user)}>Submit friend request</button>
+                                        {this.props.userInfo._id != user._id && <button className=" btn-outline-danger shadow btn" onClick={() => this.createFriendRequest(user)}>Submit friend request</button>}
                                     </div>
                                 </Col>
                             )
