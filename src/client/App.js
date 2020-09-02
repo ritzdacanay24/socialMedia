@@ -81,7 +81,7 @@ function App() {
         <Route exact path='/' handleLogin={handleLogin} render={props => <Landing {...props} user={user} handleLogin={handleLogin} setCookieApp={setCookieApp} />} />
         <ProtectedRoute exact path='/home' user={user} component={Home} handleLogout={handleLogout} />
         <ProtectedRoute exact path='/PendingFriendRequests' user={user} component={PendingFriendRequests} />
-        <ProtectedRoute exact path='/ProfilePage' user={user} component={ProfilePage} />
+        <ProtectedRoute exact path='/ProfilePage' user={user} component={ProfilePage} handleLogout={handleLogout}/>
         <ProtectedRoute exact path='/AddFriends' user={user} component={AddFriends} />
       </Router>
       
