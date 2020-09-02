@@ -18,8 +18,6 @@ const Landing = props => {
       <div>
         <RegistrationForm handleSuccessfulAuth={handleSuccessfulAuth}/>
       </div>
-      <button onClick={props.handleLogin}>This is a log in test button. Remember to set the cookie!</button>
-
     </div>
   )
 };

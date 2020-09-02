@@ -5,7 +5,7 @@ class Delete extends Component {
   render() {
     return (
       <>
-        <button onClick={() => this.props.onDelete(this.props.id)}>Delete</button>
+        <button className="btn-danger btn" onClick={() => this.props.onDelete(this.props.id)}>Delete Post</button>
       </>
     );
   }
