@@ -82,7 +82,11 @@ h5 {
   color: white;
   font-weight: bold
 }
-
+.dark-red1 {
+  background-color: RGB(88, 0, 0, 0.6);
+  color: white;
+  font-weight: bold
+}
 a.nav-link {
   color: white;
   cursor: pointer;
@@ -156,4 +160,18 @@ div>.post {
 
 .pointer {
   cursor: pointer;
+}
+
+.container{
+  padding:5%;
+}
+.container .img{
+  text-align:center;
+}
+.container .details{
+  border-left:3px solid #ded4da;
+}
+.container .details p{
+  font-size:15px;
+  font-weight:bold;
 }
