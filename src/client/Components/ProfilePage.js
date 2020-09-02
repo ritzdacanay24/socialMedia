@@ -32,7 +32,7 @@ function ProfilePage(props) {
 
     return (
         <div>
-        <Navigation/>
+        55555
         <div  id="profileCon">
             <Row>
                 <Col><h1>{responseData.firstName}</h1></Col>
@@ -43,13 +43,13 @@ function ProfilePage(props) {
             
                 <ul id="dataList" >
                     <li>
-                        <fr><fi>First Name:</fi> {responseData.firstName}</fr>
+                        <fr>First: {responseData.firstName}</fr>
                     </li>
                     <li>
-                        <fr><fi>Last Name:</fi> {responseData.lastName}</fr>
+                        <fr>Last Name:as {responseData.lastName}</fr>
                     </li>
                     <li>
-                        <fr><fi>Email:</fi> {responseData.email}</fr>
+                        <fr>Email: {responseData.email}</fr>
                     </li>
                 </ul>
             </Form>
