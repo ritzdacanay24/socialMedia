@@ -4,22 +4,22 @@ const Navigation = props => {
   
   return (
     <>
-      <nav class="navbar navbar-expand-sm bg-dark justify-content-center">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/Home">Home</a>
+      <nav className="navbar navbar-expand-sm bg-dark justify-content-center">
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <a className="nav-link" href="/Home">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/PendingFriendRequests">Pending Friend Requests</a>
+          <li className="nav-item">
+            <a className="nav-link" href="/PendingFriendRequests">Pending Friend Requests</a>
           </li> 
-          <li class="nav-item">
-            <a class="nav-link" href="/AddFriends">Add Friend</a>
+          <li className="nav-item">
+            <a className="nav-link" href="/AddFriends">Add Friend</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/ProfilePage">Profile</a>
+          <li className="nav-item">
+            <a className="nav-link" href="/ProfilePage">Profile</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href onClick={props.handleLogout} >Log Out</a>
+          <li className="nav-item">
+            <a className="nav-link" href onClick={props.handleLogout} >Log Out</a>
           </li>
         </ul>
       </nav>
