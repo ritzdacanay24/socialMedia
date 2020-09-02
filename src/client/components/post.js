@@ -21,7 +21,8 @@ class Post extends Component {
         })
     }
 
-    addNewPost = () => {
+    addNewPost = (e) => {
+        e.preventDefault();
         Axios.post('http://localhost:5000/api/posts/', {
             "userId": this.props.user._id,
             "comment": this.state.newPost
@@ -42,15 +43,15 @@ class Post extends Component {
 
     render() {
         return (
-            <div>
+            <div className="post shadow">
                 <form id="postForm">
                     <FormGroup>
                         <Label for="postText">Create Post</Label>
-                        <Input type="textarea" name="text" id="postText" placeholder="Say something tell the people what on your mind this is where you will make a post. " onChange={this.commentOnHandler} />
+                        <Input rows="7" type="textarea" name="text" id="postText" placeholder="Say something..Tell the people what is on your mind.." onChange={this.commentOnHandler} />
                     </FormGroup>
-                    <Button outline color="success" onClick={this.addNewPost}>Comment</Button>
+                    <button className="btn-danger btn" onClick={this.addNewPost}>Submit Post!</button>
                 </form>
-                <hr />
+                <div className="hr-fade"></div>
                 <div style={{ maxHeight: "600px", overflow: "auto" }}>
                     <ViewPosts userInfo={this.props.user} getPosts={this.getPosts} friendPosts={this.state.friendPosts} />
                 </div>
